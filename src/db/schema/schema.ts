@@ -8,14 +8,14 @@ export const users = pg.pgTable('users', {
 		.primaryKey()
 		.$defaultFn(() => Bun.randomUUIDv7()),
 	name: pg
-		.text('name')
+		.text()
 		.notNull(),
 	email: pg
-		.text('email')
+		.text()
 		.notNull()
 		.unique(),
 	dateOfBirth: pg
-		.timestamp('dateOfBirth')
+		.timestamp()
 		.notNull()
 })
 
@@ -31,8 +31,7 @@ export const products = pg.pgTable('products', {
 		.primaryKey()
 		.$defaultFn(() => Bun.randomUUIDv7()),
 	imageUrl: pg
-		.text('url')
-		.default('./'),
+		.text('url'),
 	name: pg
 		.text('name')
 		.notNull(),
