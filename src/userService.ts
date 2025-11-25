@@ -30,7 +30,7 @@ export const usersRouter = new Elysia({
 
 //получаем пользователя
 .get("/:id", async ({ params }) => {
-  await db.query.users.findFirst({
+  const res = await db.query.users.findFirst({
     where: eq(users.id, params.id),
     with: {
       favours: {
@@ -45,6 +45,7 @@ export const usersRouter = new Elysia({
       }
     }
   })
+  return res
 })
 
 //создаем пользователя

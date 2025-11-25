@@ -15,9 +15,10 @@ export const cartRouter = new Elysia({
 
 //получаем корзину пользователя
 .get('/:id', async ({ params }) => {
-	await db.query.cart.findMany({
+	const res = await db.query.cart.findMany({
 		where: eq(cart.userId, params.id)
 	})
+	return res
 })
 
 //добавляем товар в корзину

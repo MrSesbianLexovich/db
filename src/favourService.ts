@@ -15,9 +15,10 @@ export const favourRouter = new Elysia({
 
 // получаем избранное пользователя
 .get("/:id", async ({ params }) => {
-	await db.query.favour.findMany({
+	const res = await db.query.favour.findMany({
 		where: eq(favour.userId, params.id)
 	})
+	return res
 })
 
 // добавляем товар в избранное
